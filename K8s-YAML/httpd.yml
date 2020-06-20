@@ -25,7 +25,16 @@ spec:
           - name: httpd-vol
             mountPath: /var/www/html/
 
+        volumeMounts:
+          - name: logs-vol
+            mountPath: /var/log/httpd/
+
       volumes:
       - name: httpd-vol
         persistentVolumeClaim:
           claimName: web-pvc
+
+      volumes:
+      - name: logs-vol
+        persistentVolumeClaim:
+          claimName: log-pvc

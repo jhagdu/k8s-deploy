@@ -22,10 +22,19 @@ spec:
         - containerPort: 80
 
         volumeMounts:
-          - name: php-vol
+          - name: httpd-vol
             mountPath: /var/www/html/
 
+        volumeMounts:
+          - name: log-vol
+            mountPath: /var/log/httpd/
+
       volumes:
-      - name: php-vol
+      - name: httpd-vol
         persistentVolumeClaim:
           claimName: web-pvc
+
+      volumes:
+      - name: log-vol
+        persistentVolumeClaim:
+          claimName: log-pvc
